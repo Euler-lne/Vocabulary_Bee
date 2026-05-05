@@ -27,7 +27,8 @@ window/stretch/aspect="expand"
 
 folder_colors={
 "res://assets/": "orange",
-"res://scripts/": "red"
+"res://scripts/": "red",
+"res://styles/": "yellow"
 }
 
 [physics]
