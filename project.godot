@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 SceneTransition="*uid://f8b53ubvxt5d"
+LayoutSolver2d="*uid://gwy7dsh082xd"
 
 [display]
 
