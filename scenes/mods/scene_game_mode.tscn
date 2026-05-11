@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dnibv31lralv8"]
+
+[ext_resource type="Texture2D" uid="uid://d2688pbaa3qkn" path="res://assets/scene_imgs/bedroom.png" id="2_ie2el"]
+
+[node name="SceneGameMode" type="Node2D" unique_id=2050766165]
+
+[node name="Imgs" type="Sprite2D" parent="." unique_id=473989879]
+position = Vector2(582, 341)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_ie2el")

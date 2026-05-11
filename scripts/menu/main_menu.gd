@@ -14,7 +14,7 @@ func _ready():
 func _on_login_pressed():
 	# 使用之前写好的转场单例跳转到听音选词场景
 	# 注意：路径必须准确，假设场景放在 scenes/modes/ListenAndPick.tscn
-	SceneTransition.change_scene("res://scenes/mods/listen_and_pick.tscn")
+	SceneTransition.change_scene("res://scenes/menu/game_mod_menu.tscn")
 
 func _on_register_pressed():
 	print("注册功能待实现")
