@@ -19,7 +19,7 @@ func _on_listen_and_pick_btn() -> void:
 	SceneTransition.change_scene("res://scenes/mods/listen_and_pick.tscn")
 	
 func _on_scene_game_btn() -> void:
-	pass
+	SceneTransition.change_scene("res://scenes/mods/scene_game_mode.tscn")
 	
 func _on_back_btn() -> void:
 	SceneTransition.change_scene("res://scenes/menu/main_menu.tscn")
