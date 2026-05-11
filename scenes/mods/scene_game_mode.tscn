@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bj55v7i0jjoep" path="res://scripts/mods/scene_game_mode.gd" id="1_ie2el"]
 [ext_resource type="Texture2D" uid="uid://d2688pbaa3qkn" path="res://assets/scene_imgs/bedroom.png" id="2_ie2el"]
+[ext_resource type="PackedScene" uid="uid://nf3arlu8boi2" path="res://scenes/common/back.tscn" id="3_7bx6h"]
 
 [node name="SceneGameMode" type="Control" unique_id=1865487698]
 layout_mode = 3
@@ -61,3 +62,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Words" type="Node2D" parent="." unique_id=729753152]
+
+[node name="Back" parent="." unique_id=1594582093 instance=ExtResource("3_7bx6h")]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 6.0
+offset_right = 4.0
+offset_bottom = 6.0

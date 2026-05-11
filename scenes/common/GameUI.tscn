@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b1kmjixg0oo03"]
 
 [ext_resource type="Script" uid="uid://cdewpgj23d7o4" path="res://scripts/common/game_ui.gd" id="1_aurti"]
+[ext_resource type="PackedScene" uid="uid://nf3arlu8boi2" path="res://scenes/common/back.tscn" id="2_3cqg8"]
 
 [sub_resource type="StyleBoxFlat" id="TopBarStyle"]
 bg_color = Color(1, 1, 1, 0.386)
@@ -81,9 +82,10 @@ layout_mode = 2
 
 [node name="GameTypeLabel" type="Label" parent="TopBar/TopContent/HBox" unique_id=365336595]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 6
 theme_override_font_sizes/font_size = 28
 text = "WORD GAME"
+horizontal_alignment = 1
 
 [node name="Spacer" type="Control" parent="TopBar/TopContent/HBox" unique_id=1968709457]
 layout_mode = 2
@@ -186,3 +188,10 @@ theme_override_styles/hover = SubResource("ButtonHover")
 text = "RESTART"
 
 [node name="Timer" type="Timer" parent="." unique_id=1293815828]
+
+[node name="Back" parent="." unique_id=1594582093 instance=ExtResource("2_3cqg8")]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 27.93
+offset_right = 18.0
+offset_bottom = 27.93
