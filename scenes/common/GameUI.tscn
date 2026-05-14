@@ -135,6 +135,7 @@ horizontal_alignment = 1
 
 [node name="GameOverPanel" type="Panel" parent="." unique_id=2112848492]
 visible = false
+z_index = 10
 layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5

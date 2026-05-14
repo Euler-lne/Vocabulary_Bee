@@ -1,11 +1,10 @@
-extends Node2D
+extends Control
 class_name ListenAndPick
 
 @onready var card_container = $GameArea/CardContainer
 @onready var game_area = $GameArea
-@onready var game_ui = $UILayer/GameUI
-@onready var hint_label = $UILayer/HintLabel
-@onready var boundary_shape = $GameArea/Boundary/CollisionShape2D
+@onready var game_ui = $GameUI
+@onready var hint_label = $HintLabel
 
 @export var word_card_scene: PackedScene = preload("res://scenes/common/WordCard.tscn")
 @export var json_path: String = "res://data/TEM-4.json"
@@ -28,12 +27,24 @@ func _ready():
 		
 
 func _get_boundary_rect() -> Rect2:
-	var shape = boundary_shape.shape as RectangleShape2D
-	if not shape:
-		return Rect2()
-	var size = shape.size
-	var center = boundary_shape.global_position
-	return Rect2(center - size/2, size)
+	 # 获取屏幕大小
+	var screen_size = get_viewport().get_visible_rect().size
+	
+	# 获取 HintLabel 的下边界（全局坐标）
+	# 假设 hint_label 是有效的节点引用，请确保它已在 _ready() 中赋值
+	var hint_bottom = hint_label.get_global_rect().end.y
+	
+	# 上方与 HintLabel 的间距（像素）
+	var top_margin = 20
+	
+	# 计算矩形区域：左右无留白，底部无留白
+	var rect = Rect2(
+		0,                      # left
+		hint_bottom + top_margin,  # top
+		screen_size.x,          # width
+		screen_size.y - (hint_bottom + top_margin)  # height（底部自然贴边）
+	)
+	return rect
 
 func _init_tts():
 	var voices = DisplayServer.tts_get_voices_for_language("en")
