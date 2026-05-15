@@ -249,9 +249,7 @@ func vanish():
 
 func _spawn_fireworks():
 	if not firework_scene:
-		print("No")
 		return
-	print("Yes")
 	var fx = firework_scene.instantiate()
 	get_tree().current_scene.add_child(fx)
 	fx.global_position = global_position
