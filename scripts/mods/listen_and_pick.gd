@@ -19,6 +19,8 @@ var _tts_voice_id: String = ""
 var use_timer_mode = true
 
 func _ready():
+	use_timer_mode = (GameManager.current_listen_mode == GameManager.ListenMode.TIME)
+	json_path = GameManager.vocab_file_map[GameManager.current_vocab_level]
 	load_words()
 	_setup_signals()
 	_init_tts()
@@ -150,7 +152,7 @@ func _start_new_round():
 		current_cards.append(card)
 
 	# 6. 更新 UI 提示，播放语音
-	hint_label.text = "听音选词: " + current_target.get("meaning", "")
+	hint_label.text = current_target.get("meaning", "")
 	_speak_word(current_target["word"])
 
 

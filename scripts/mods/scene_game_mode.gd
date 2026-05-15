@@ -8,6 +8,9 @@ extends Control
 @onready var top: Panel = $Top
 @onready var word_name: Label = $Top/Label
 @onready var words: Node2D = $Words   # 注意：建议改为 Node2D，但这里保留原样
+@onready var win_panel = $Panel
+@onready var restart_btn = $Panel/MainContainer/Buttons/RestartBtn
+@onready var back_btn = $Panel/MainContainer/Buttons/BackBtn
 
 # ──────────────────────────────────────────────
 # 常量配置
@@ -40,11 +43,23 @@ var placed_rects: Array[Rect2] = []         # 存储已放置卡片的全局矩�
 # 生命周期
 # ──────────────────────────────────────────────
 func _ready() -> void:
+	restart_btn.pressed.connect(_on_restart_btn)
+	back_btn.pressed.connect(_on_back_btn)
 	_load_scene_list()
 	await _load_scene(scene_index)
 
+func _on_restart_btn():
+	win_panel.visible = false       # 隐藏胜利/结算面板
+	scene_index = 0                 # 重置索引，从头开始
+	_load_scene_list()              # 重新洗牌场景列表
+	await _load_scene(scene_index)  # 加载第一个场景（索引0）
+	
+func _on_back_btn():
+	SceneTransition.change_scene("res://scenes/menu/game_mod_menu.tscn")
+
 func _load_scene_list() -> void:
 	scene_files.clear()
+	win_panel.visible = false
 	var dir := DirAccess.open(SCENE_DATA_DIR)
 	if dir == null:
 		push_error("无法打开 scene_data 目录：" + SCENE_DATA_DIR)
@@ -266,8 +281,4 @@ func _flash_label_red() -> void:
 	tween.tween_property(word_name, "modulate", Color.WHITE, FLASH_DURATION * 0.7)
 
 func _on_game_over() -> void:
-	var dialog = AcceptDialog.new()
-	dialog.title = "游戏结束"
-	dialog.dialog_text = "🎉 恭喜！你已完成所有场景！"
-	add_child(dialog)
-	dialog.popup_centered()
+	win_panel.visible = true
