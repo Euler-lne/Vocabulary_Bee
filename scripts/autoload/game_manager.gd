@@ -77,6 +77,8 @@ var current_vocab_level: VocabLevel = VocabLevel.CET4
 var current_listen_mode: ListenMode = ListenMode.TIME
 var current_cursor_type: CursorType = CursorType.CURSOR1
 
+var current_scene_mode_have_voice = false
+const VANISH_ANIMATION_TIME := 0.3
 # ==============================
 # 动态光标专用（CanvasLayer + Sprite2D）
 # ==============================

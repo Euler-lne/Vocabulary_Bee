@@ -4,11 +4,13 @@ extends Control
 @onready var cursor_level_option = $UI/MainContainer/MenuButtons/Cursor/OptionButton
 @onready var listen_and_pick_mode = $UI/MainContainer/MenuButtons/listen_and_pick_mode/OptionButton
 @onready var back_btn = $UI/MainContainer/MenuButtons/BackBtn
+@onready var scene_mode_has_voice = $UI/MainContainer/MenuButtons/scene_mode_has_voice/CheckButton
 
 func _ready() -> void:
 	init_vocab_level_option()
 	init_cursor_option()
 	init_listen_mode_option()
+	init_scene_mode_has_voice()
 	
 	if back_btn:
 		back_btn.pressed.connect(_on_back_btn)
@@ -20,6 +22,15 @@ func _ready() -> void:
 func _on_back_btn():
 	SceneTransition.change_scene("res://scenes/menu/main_menu.tscn")
 
+func init_scene_mode_has_voice():
+	# 读取 GameManager 中的值，设置 CheckButton 状态
+	scene_mode_has_voice.button_pressed = GameManager.current_scene_mode_have_voice
+	scene_mode_has_voice.toggled.connect(_on_scene_mode_voice_toggled)
+
+func _on_scene_mode_voice_toggled(button_pressed: bool):
+	GameManager.current_scene_mode_have_voice = button_pressed
+	print("场景模式语音开关：", button_pressed)
+	
 # ==============================
 # 1. 词库难度下拉框
 # ==============================

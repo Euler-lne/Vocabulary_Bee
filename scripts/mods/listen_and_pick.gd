@@ -147,7 +147,7 @@ func _start_new_round():
 		card.position = layout[word]     # 直接使用计算好的中心点
 		card.set_mode(card_motion_mode)
 		card.set_boundary(play_area)
-		card.clicked.connect(_on_card_clicked)
+		card.clicked.connect(_on_card_clicked.bind(card, word))
 		card.visible = true
 		current_cards.append(card)
 
@@ -193,13 +193,15 @@ func _speak_word(word: String):
 	else:
 		print("Cannot speak word: no TTS voice")
 
-func _on_card_clicked(word: String):
+func _on_card_clicked(card: WordCard, word: String):
 	if is_waiting_next_round:
 		return
 	if word == current_target["word"]:
 		if game_ui:
 			game_ui.add_score(game_ui.score_per_correct)
 		is_waiting_next_round = true
+		card.vanish()
+		await get_tree().create_timer(GameManager.VANISH_ANIMATION_TIME).timeout
 		_start_new_round()
 	else:
 		if game_ui and not game_ui.use_timer_mode:

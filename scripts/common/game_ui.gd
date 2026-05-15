@@ -8,7 +8,7 @@ class_name GameUI
 @onready var timer_container = $StatusPanel/TimerContainer
 @onready var timer_label = $StatusPanel/TimerContainer/TimerLabel
 @onready var game_over_panel = $GameOverPanel
-@onready var restart_button = $GameOverPanel/VBox/RestartButton
+@onready var restart_button = $GameOverPanel/VBox/MenuButtons/RestartButton
 @onready var timer_node = $Timer
 
 # ========== 导出变量（可在检查器中调整） ==========

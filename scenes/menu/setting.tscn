@@ -258,6 +258,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.96, 0.97, 0.99, 1)
 
 [node name="BackgroundPattern" type="TextureRect" parent="." unique_id=209664241]
@@ -266,6 +268,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 expand_mode = 3
 stretch_mode = 6
 
@@ -371,6 +375,22 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme = SubResource("Theme_s6jdy")
 alignment = 1
+
+[node name="scene_mode_has_voice" type="HBoxContainer" parent="UI/MainContainer/MenuButtons" unique_id=1023949991]
+layout_mode = 2
+
+[node name="SMHV" type="Label" parent="UI/MainContainer/MenuButtons/scene_mode_has_voice" unique_id=2112218399]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_font_sizes/font_size = 18
+text = "沉浸射击音量模式："
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="UI/MainContainer/MenuButtons/scene_mode_has_voice" unique_id=996041520]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="VSeparator" type="VSeparator" parent="UI/MainContainer/MenuButtons" unique_id=1711324180]
 custom_minimum_size = Vector2(0, 50)
