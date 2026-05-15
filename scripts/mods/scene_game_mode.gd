@@ -144,7 +144,7 @@ func _load_next_question() -> void:
 	
 	if current_question.is_listen_mode:
 		# 模式二：听音选英文
-		word_name.text = "🔊 听音选词"
+		word_name.text = "听音选词"
 		word_name.modulate = Color.WHITE
 		_speak_word(current_english)
 		await _spawn_audio_cards(ann)
